@@ -1,0 +1,83 @@
+***IAM - Instance Access Management***
+USER: person or service
+  Access types:
+    Programmatic access: access key ID + secret access key
+    Management Console access: password (define polices for length, complexity, etc)
+  Default: no access for new IAM users
+  ROOT Account:
+    Enable Multi-factor Authentication
+    Create IAM user and assign admin permissions as required
+    ARN - Amazon Resource Name: unique user id on AWS
+GROUP: user groups
+  Have polices attached and applied to common users
+  Can not have nested groups (groups within groups)
+ROLES:
+  Exemple: S3 Full Access, DynamoDB Read-Only, Lambda Basic Execution
+  Users can assume roles for temp access
+POLICIES:
+  All permissions are denied by Default
+  The most restrictive police is applied over less restrictive ones
+  POLICY SIMULATOR:
+    Helps understand, test and validate policy effects
+  CONDITION ELEMENT: apply further conditional logic
+
+AUTH METHODS
+  Access key ----------> API
+  IAM User ------------> Password ---------> Management Console
+  Signing Certificate -> Some AWS Services
+
+STS - Security Token Service
+  Global service
+  Provides temporary, limited-privilege credentials
+
+
+**GLOBAL INFRASTRUCTURE**
+  Region: Geographical, 2 or more AZ´s, isolated from other regions;
+  Availability Zone: Data Centers physically isolated from others AZs;
+  Edge Location: low latency delivery of cached content (used by CloudFront);
+  Regional Edge Location: Large caches that sitsa between AWS Services and Edge Locations (used by CloudFront);
+  Global Network: Connects DCenters, AZs and AWS regions. It's a highly available, low-latency, private Network.
+
+
+**COMPUTING:**
+**AMAZON EC2**
+  - Recizeble capacity
+  - Full control
+
+  **Access security**
+  KEY PAIR: public key that AWS stores
+  PRIVATE KEY: file that you store
+    - Windows: obtain password used into your Instance
+    - Linux: allows secure SSH (source shell) into your Instance
+
+  **Config and usage data**
+  USER DATA (http://169.254.169.254/latest/user-data): suplied by the user at instance launch in the form of script
+  INSTANCE METADATA (http://169.254.169.254/latest/meta-data/): data about instance, used to configure or manage the running instance
+
+  **Pricing Models**
+  ON-DEMAND:
+    - No upfront fee
+    - Charged by hour or second
+    - No commitment
+    - **Ideal for short term needs or unpredictable workloads**
+
+  RESERVED:
+    - Options: No upfront, partial upfront or all upfront
+    - Charged by hour or second
+    - 1-year or 3-year commitment
+    - **Ideal for steady-state workloads and predictable usage**
+
+  SPOT
+    - No upfront fee
+    - Charged by hour or second
+    - No commitment
+    - **Ideal for cost-sensitive, compute intensive use cases that can withstand interruption**
+
+  **Instance types**
+  GENERAL PURPOSE
+  COMPUTE OPTIMIZED
+  MEMORY OPTIMIZED
+  ACCELERATED COMPUTING
+  STORAGE OPTIMIZED
+
+  **AMIs - Amazon Machine Images**
